@@ -1,0 +1,111 @@
+from PySide6.QtCore import QProcess, QTimer, Signal, QObject
+import urllib.request
+import json
+
+class ServerController(QObject):
+    output = Signal(str)
+    server_status_changed = Signal(str)
+    ngrok_ip_changed = Signal(str)
+
+    def __init__(self):
+        super().__init__()
+        self.starbound_server_process = QProcess()
+        self.ngrok_process = QProcess()
+        self.restart_requested = False
+
+        self.starbound_server_process.readyReadStandardOutput.connect(self.read_output)
+        self.starbound_server_process.finished.connect(self.on_process_finished)
+        self.ngrok_process.started.connect(self.get_public_ip)
+        
+
+    def start(self):
+        if self.starbound_server_process.state() != QProcess.NotRunning:
+            return
+        
+        self.starbound_server_process.setWorkingDirectory(
+            r"M:\Starbound_Things\OpenStarbound-Windows-Server\win"
+        )
+
+        self.starbound_server_process.start(
+            r"M:\Starbound_Things\OpenStarbound-Windows-Server\win\starbound_server.exe"
+        )
+        
+        self.server_status_changed.emit("Starting")
+        
+        
+    def start_ngrok(self):
+        arguments = ("tcp", "21025")
+        
+        self.ngrok_process.setWorkingDirectory(
+            r"M:\Starbound_Things\OpenStarbound-Windows-Server\win\tools"
+        )
+        
+        self.ngrok_process.start(
+            r"M:\Starbound_Things\OpenStarbound-Windows-Server\win\tools\ngrok.exe", arguments=arguments
+        )
+              
+        
+    def stop(self):
+        if self.starbound_server_process.state() == QProcess.Running:
+            self.server_status_changed.emit("Stopping")
+
+            self.starbound_server_process.terminate()
+            
+            if not self.restart_requested:
+                self.ngrok_process.terminate()
+            
+            def _force_kill():
+                if self.starbound_server_process.state() == QProcess.Running:
+                    self.starbound_server_process.kill()
+                    
+                if not self.restart_requested:
+                    if self.ngrok_process.state() == QProcess.Running:
+                        self.ngrok_process.kill()
+                    
+            # if it doesn't stop in 3 seconds → force kill
+            QTimer.singleShot(3000, _force_kill)
+        
+        
+    def restart(self):
+        self.restart_requested = True
+        self.stop()
+        self.server_status_changed.emit("Restarting")
+        
+        
+    def read_output(self):
+        data = self.starbound_server_process.readAllStandardOutput().data().decode()
+
+        for line in data.splitlines():
+            if "listening for incoming TCP connections" in line:
+                self.server_status_changed.emit("Online")
+                if self.ngrok_process.state() != QProcess.Running:
+                    self.start_ngrok()
+            
+            self.output.emit(line)
+                
+                
+    def on_process_finished(self):
+        if self.restart_requested:
+            self.restart_requested = False
+            self.start()
+        else:
+            self.server_status_changed.emit("Stopped")
+            self.ngrok_ip_changed.emit("")
+                
+    
+    def get_pid(self):
+        return self.starbound_server_process.processId()  
+       
+
+    def get_public_ip(self):
+        def retrieve():
+            try:
+                content = urllib.request.urlopen("http://127.0.0.1:4040/api/tunnels")
+                content = json.load(content)
+                for tunnel in content["tunnels"]:
+                    if tunnel["proto"] == "tcp":
+                        self.ngrok_ip_changed.emit(tunnel["public_url"][6:])
+            except urllib.error.URLError:
+                self.ngrok_ip_changed.emit("Couldn't Retrieve")
+        QTimer.singleShot(3000, retrieve)
+    
