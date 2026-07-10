@@ -1,1 +1,1 @@
-# OpenStarbound-Server-Manager
+# OpenStarbound-Server-Manager (WIP)
