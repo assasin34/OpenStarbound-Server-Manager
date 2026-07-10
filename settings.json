@@ -1,8 +1,8 @@
 {
-    "server_directory": "M:\\Starbound_Things\\OpenStarbound-Windows-Server\\win",
     "server_executable": "M:\\Starbound_Things\\OpenStarbound-Windows-Server\\win\\starbound_server.exe",
-    "ngrok_directory": "M:\\Starbound_Things\\OpenStarbound-Windows-Server\\win\\tools",
+    "server_directory": "M:\\Starbound_Things\\OpenStarbound-Windows-Server\\win",
     "ngrok_executable": "M:\\Starbound_Things\\OpenStarbound-Windows-Server\\win\\tools\\ngrok.exe",
+    "ngrok_directory": "M:\\Starbound_Things\\OpenStarbound-Windows-Server\\win\\tools",
     "universe_path": "...",
     "assets_path": "...",
     "use_ngrok": true

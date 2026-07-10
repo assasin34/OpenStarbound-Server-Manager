@@ -38,6 +38,24 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.uptime_monitor.time_changed.connect(self.update_time)
     
     
+    def start_server(self):
+        self.txtConsole.clear()
+        self.server.start()
+           
+        
+    def stop_server(self):
+        self.server.stop()
+        
+        
+    def restart_server(self):
+        self.txtConsole.clear()
+        self.server.restart()
+
+
+    def add_console_line(self, text):
+        self.txtConsole.appendPlainText(text)
+
+    
     def update_server_status(self, text):
         if text == "Online":
             self.ServerStatusInfo.setText("Online")
@@ -85,29 +103,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def update_time(self, time):
         self.ServerUptimeInfo.setText(time)
         self.ServerUptimeInfo.setStyleSheet("font-weight: bold;")
-    
-    
-    def add_console_line(self, text):
-        self.txtConsole.appendPlainText(text)
-        
-        
-    def start_server(self):
-        self.txtConsole.clear()
-        self.server.start()
-           
-        
-    def stop_server(self):
-        self.server.stop()
-        
-        
-    def restart_server(self):
-        self.txtConsole.clear()
-        self.server.restart()
 
 
     def open_settings(self):
         dialog = SettingsDialog(self.settings_manager)
         dialog.exec()
+      
         
 app = QtWidgets.QApplication(sys.argv)
 

@@ -20,7 +20,7 @@ class UpTimeMonitor(QObject):
         if text == "Online":
             self.timer.start()
             self.start_time = time.monotonic()
-        elif text == "Stopped" or text == "Restarting":
+        elif text in ("Stopped", "Restarting"):
             self.timer.stop()
             self.time_changed.emit('0h 0m 0s')
     

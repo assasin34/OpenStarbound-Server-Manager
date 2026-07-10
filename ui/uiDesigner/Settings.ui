@@ -32,7 +32,7 @@
    <enum>Qt::ContextMenuPolicy::ActionsContextMenu</enum>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Settings</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog { background-color: rgb(236, 236, 236) }
@@ -80,9 +80,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>40</y>
+     <y>0</y>
      <width>651</width>
-     <height>441</height>
+     <height>481</height>
     </rect>
    </property>
    <property name="title">
@@ -92,7 +92,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>-2</y>
+      <y>38</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -108,7 +108,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>20</y>
+      <y>60</y>
       <width>651</width>
       <height>21</height>
      </rect>
@@ -130,7 +130,7 @@
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>30</y>
+      <y>70</y>
       <width>441</width>
       <height>201</height>
      </rect>
@@ -151,7 +151,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>29</y>
+      <y>69</y>
       <width>83</width>
       <height>201</height>
      </rect>
@@ -236,7 +236,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>270</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -252,7 +252,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>253</y>
+      <y>293</y>
       <width>651</width>
       <height>21</height>
      </rect>
@@ -274,7 +274,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>60</y>
+      <y>100</y>
       <width>101</width>
       <height>20</height>
      </rect>
@@ -287,7 +287,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
+      <y>160</y>
       <width>101</width>
       <height>20</height>
      </rect>
@@ -300,7 +300,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>299</y>
+      <y>339</y>
       <width>83</width>
       <height>141</height>
      </rect>
@@ -365,7 +365,7 @@
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>300</y>
+      <y>340</y>
       <width>441</width>
       <height>141</height>
      </rect>
@@ -383,7 +383,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>280</y>
+      <y>320</y>
       <width>99</width>
       <height>24</height>
      </rect>
@@ -396,7 +396,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>330</y>
+      <y>370</y>
       <width>101</width>
       <height>20</height>
      </rect>
@@ -409,7 +409,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>390</y>
+      <y>430</y>
       <width>101</width>
       <height>20</height>
      </rect>
@@ -422,7 +422,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>224</y>
+      <y>264</y>
       <width>651</width>
       <height>21</height>
      </rect>
@@ -444,13 +444,35 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>180</y>
+      <y>220</y>
       <width>101</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
      <string>Universe Folder:</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>651</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Sunken</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
     </property>
    </widget>
   </widget>

@@ -530,7 +530,7 @@ QProgressBar::chunk {
     </widget>
     <widget class="QWidget" name="tabConfig">
      <attribute name="title">
-      <string>Config</string>
+      <string>Server Config</string>
      </attribute>
     </widget>
    </widget>

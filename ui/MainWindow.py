@@ -230,6 +230,6 @@ class Ui_MainWindow(object):
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Server:", None))
         self.btnSettings.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabGeneral), QCoreApplication.translate("MainWindow", u"General", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabConfig), QCoreApplication.translate("MainWindow", u"Config", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabConfig), QCoreApplication.translate("MainWindow", u"Server Config", None))
     # retranslateUi
 
