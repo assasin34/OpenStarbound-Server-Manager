@@ -1,7 +1,20 @@
 # OpenStarbound Server Manager
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![License](https://img.shields.io/github/license/assasin34/OpenStarbound-Server-Manager)
+![Platform](https://img.shields.io/badge/Platform-Windows-blue)
 [![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/assasin34/OpenStarbound-Server-Manager)
 
 A graphical server manager for OpenStarbound, built with Python and PySide6. This tool provides an easy-to-use interface for managing your OpenStarbound dedicated server, monitoring its performance, and viewing connected players.
+
+## Contents
+
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
 ## Features
 
@@ -17,7 +30,7 @@ A graphical server manager for OpenStarbound, built with Python and PySide6. Thi
 
 ### Prerequisites
 *   Python 3.x
-*   A local copy of the OpenStarbound dedicated server.
+*   A local copy of the [OpenStarbound](https://github.com/OpenStarbound/OpenStarbound) dedicated server.
 
 ### Installation
 
@@ -70,6 +83,28 @@ python main.py
 *   **Players and Console:** The main window displays the list of connected players on the left and the live server console on the right.
 *   **Server Info:** The bottom-left panel shows the server's status, uptime, public IP address (either your public IP or an `ngrok` URL), and the current player count.
 *   **Resources Usage:** The bottom-right panel displays real-time CPU and RAM usage percentages.
+
+## Roadmap
+
+### Completed
+
+- [x] Server management
+- [x] Live console
+- [x] Player monitoring
+- [x] Resource monitoring
+- [x] Ngrok integration
+
+### Planned
+
+- [ ] Server Config Editor
+- [ ] Automatic backups
+- [ ] Plugin/Mod manager
+- [ ] Multiple server profiles
+
+## Acknowledgements
+
+- [OpenStarbound](https://github.com/OpenStarbound/OpenStarbound) – The open-source reimplementation and enhancement of the Starbound engine.
+- [Starbound Server GUI (PenGUIn)](https://community.playstarbound.com/threads/penguin-starbound-server-gui.118075/) – Inspiration for the overall concept and several server management features.
 
 ## License
 
