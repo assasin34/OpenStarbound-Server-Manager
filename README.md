@@ -96,6 +96,7 @@ python main.py
 
 ### Planned
 
+- [ ] Crash Handling
 - [ ] Server Config Editor
 - [ ] Automatic backups
 - [ ] Plugin/Mod manager
