@@ -187,10 +187,10 @@ class Ui_MainWindow(object):
         self.btnSettings = QPushButton(self.tabGeneral)
         self.btnSettings.setObjectName(u"btnSettings")
         self.btnSettings.setGeometry(QRect(770, 0, 81, 26))
+        self.btnConfig = QPushButton(self.tabGeneral)
+        self.btnConfig.setObjectName(u"btnConfig")
+        self.btnConfig.setGeometry(QRect(690, 0, 81, 26))
         self.tabWidget.addTab(self.tabGeneral, "")
-        self.tabConfig = QWidget()
-        self.tabConfig.setObjectName(u"tabConfig")
-        self.tabWidget.addTab(self.tabConfig, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusBar = QStatusBar(MainWindow)
         self.statusBar.setObjectName(u"statusBar")
@@ -229,7 +229,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Total:", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Server:", None))
         self.btnSettings.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
+        self.btnConfig.setText(QCoreApplication.translate("MainWindow", u"Config", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabGeneral), QCoreApplication.translate("MainWindow", u"General", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabConfig), QCoreApplication.translate("MainWindow", u"Server Config", None))
     # retranslateUi
 

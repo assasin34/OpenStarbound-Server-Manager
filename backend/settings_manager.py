@@ -7,11 +7,11 @@ class SettingsManager(QObject):
     
     SETTINGS_FILE = "settings.json"
     DEFAULT_SETTINGS = {
-    "server_executable": "C:\\path\\to\\your\\starbound_server.exe",
-    "server_directory": "C:\\path\\to\\your\\server_folder",
-    "ngrok_executable": "C:\\path\\to\\your\\ngrok.exe",
-    "ngrok_directory": "C:\\path\\to\\your\\ngrok_folder",
-    "universe_path": "...",
+    "server_executable": "C:/path/to/your/starbound_server.exe",
+    "server_directory": "C:/path/to/your/server_folder",
+    "ngrok_executable": "C:/path/to/your/ngrok.exe",
+    "ngrok_directory": "C:/path/to/your/ngrok_folder",
+    "storage_path": "...",
     "assets_path": "...",
     "use_ngrok": False
 }

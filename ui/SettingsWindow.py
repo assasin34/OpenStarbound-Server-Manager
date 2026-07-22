@@ -37,15 +37,10 @@ class Ui_Dialog(object):
 "")
         self.buttonBox = QDialogButtonBox(Dialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(0, 480, 621, 32))
+        self.buttonBox.setGeometry(QRect(0, 480, 651, 32))
         self.buttonBox.setOrientation(Qt.Orientation.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Save)
         self.buttonBox.setCenterButtons(True)
-        self.label = QLabel(Dialog)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(200, 7, 191, 41))
-        self.label.setStyleSheet(u"font: 700 18pt \"Arial\";")
-        self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
         self.groupBox = QGroupBox(Dialog)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(0, 0, 651, 481))
@@ -76,10 +71,10 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addWidget(self.lineEditServerExecutableFolder)
 
-        self.lineEditUniverseFolder = QLineEdit(self.verticalLayoutWidget)
-        self.lineEditUniverseFolder.setObjectName(u"lineEditUniverseFolder")
+        self.lineEditStorageFolder = QLineEdit(self.verticalLayoutWidget)
+        self.lineEditStorageFolder.setObjectName(u"lineEditStorageFolder")
 
-        self.verticalLayout.addWidget(self.lineEditUniverseFolder)
+        self.verticalLayout.addWidget(self.lineEditStorageFolder)
 
         self.verticalLayoutWidget_2 = QWidget(self.groupBox)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
@@ -109,10 +104,10 @@ class Ui_Dialog(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer_3)
 
-        self.btnUniverseFolderBrowse = QPushButton(self.verticalLayoutWidget_2)
-        self.btnUniverseFolderBrowse.setObjectName(u"btnUniverseFolderBrowse")
+        self.btnStorageFolderBrowse = QPushButton(self.verticalLayoutWidget_2)
+        self.btnStorageFolderBrowse.setObjectName(u"btnStorageFolderBrowse")
 
-        self.verticalLayout_2.addWidget(self.btnUniverseFolderBrowse)
+        self.verticalLayout_2.addWidget(self.btnStorageFolderBrowse)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -205,6 +200,11 @@ class Ui_Dialog(object):
         self.line_4.setFrameShadow(QFrame.Shadow.Sunken)
         self.line_4.setLineWidth(1)
         self.line_4.setFrameShape(QFrame.Shape.HLine)
+        self.label = QLabel(self.groupBox)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(210, 6, 191, 41))
+        self.label.setStyleSheet(u"font: 700 18pt \"Arial\";")
+        self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)
@@ -215,12 +215,11 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Settings", None))
-        self.label.setText(QCoreApplication.translate("Dialog", u"Settings", None))
         self.groupBox.setTitle("")
         self.label_2.setText(QCoreApplication.translate("Dialog", u"Server", None))
         self.btnServerExecutableBrowse.setText(QCoreApplication.translate("Dialog", u"Browse", None))
         self.btnServerExecutableFolderBrowse.setText(QCoreApplication.translate("Dialog", u"Browse", None))
-        self.btnUniverseFolderBrowse.setText(QCoreApplication.translate("Dialog", u"Browse", None))
+        self.btnStorageFolderBrowse.setText(QCoreApplication.translate("Dialog", u"Browse", None))
         self.label_5.setText(QCoreApplication.translate("Dialog", u"Network", None))
         self.label_3.setText(QCoreApplication.translate("Dialog", u"Executable:", None))
         self.label_4.setText(QCoreApplication.translate("Dialog", u"Executable Folder:", None))
@@ -229,6 +228,7 @@ class Ui_Dialog(object):
         self.checkBoxUseNgrok.setText(QCoreApplication.translate("Dialog", u"Use Ngrok", None))
         self.label_10.setText(QCoreApplication.translate("Dialog", u"Executable:", None))
         self.label_11.setText(QCoreApplication.translate("Dialog", u"Executable Folder:", None))
-        self.label_6.setText(QCoreApplication.translate("Dialog", u"Universe Folder:", None))
+        self.label_6.setText(QCoreApplication.translate("Dialog", u"Storage Folder:", None))
+        self.label.setText(QCoreApplication.translate("Dialog", u"Settings", None))
     # retranslateUi
 

@@ -43,7 +43,7 @@
     <rect>
      <x>0</x>
      <y>480</y>
-     <width>621</width>
+     <width>651</width>
      <height>32</height>
     </rect>
    </property>
@@ -55,25 +55,6 @@
    </property>
    <property name="centerButtons">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>7</y>
-     <width>191</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 700 18pt &quot;Arial&quot;;</string>
-   </property>
-   <property name="text">
-    <string>Settings</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
@@ -143,7 +124,7 @@
       <widget class="QLineEdit" name="lineEditServerExecutableFolder"/>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEditUniverseFolder"/>
+      <widget class="QLineEdit" name="lineEditStorageFolder"/>
      </item>
     </layout>
    </widget>
@@ -211,7 +192,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="btnUniverseFolderBrowse">
+      <widget class="QPushButton" name="btnStorageFolderBrowse">
        <property name="text">
         <string>Browse</string>
        </property>
@@ -450,7 +431,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Universe Folder:</string>
+     <string>Storage Folder:</string>
     </property>
    </widget>
    <widget class="Line" name="line_4">
@@ -473,6 +454,25 @@
     </property>
     <property name="orientation">
      <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>6</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 18pt &quot;Arial&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Settings</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
     </property>
    </widget>
   </widget>

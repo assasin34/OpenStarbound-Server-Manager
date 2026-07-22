@@ -93,13 +93,16 @@ python main.py
 - [x] Player monitoring
 - [x] Resource monitoring
 - [x] Ngrok integration
+- [x] Server Config Editor
 
 ### Planned
 
 - [ ] Crash Handling
-- [ ] Server Config Editor
 - [ ] Automatic backups
 - [ ] Plugin/Mod manager
+- [ ] Player Tracking
+- [ ] Implement native Dark Mode support
+- [ ] Refresh user interface for a more modern look
 - [ ] Multiple server profiles
 
 ## Acknowledgements

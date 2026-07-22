@@ -19,7 +19,7 @@ class ResourceMonitor(QObject):
         else:
             process = psutil.Process(pid)
             process_ram = process.memory_percent()
-            process_cpu = process.cpu_percent()
+            process_cpu = process.cpu_percent(interval=0.1)
         total_ram = psutil.virtual_memory().percent
         total_cpu = psutil.cpu_percent()
         self.resources_updated.emit(process_ram, total_ram, process_cpu, total_cpu)

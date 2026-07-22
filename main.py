@@ -6,9 +6,15 @@ from backend.resource_monitor import ResourceMonitor
 from backend.player_monitor import PlayerMonitor
 from backend.uptime_monitor import UpTimeMonitor
 from backend.settings_manager import SettingsManager
+from backend.config_manager import ConfigManager
 
 from ui.MainWindow import Ui_MainWindow
 from dialogs.settings_dialog import SettingsDialog
+from dialogs.config_dialog import ConfigDialog
+
+from PySide6.QtWidgets import QMessageBox
+
+import qdarktheme
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -17,6 +23,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         
         self.settings_manager = SettingsManager()
+        self.config_manager = ConfigManager(self.settings_manager)
         self.server = ServerController(self.settings_manager)
         self.resource_monitor = ResourceMonitor(self.server)
         self.player_monitor = PlayerMonitor(self.server)
@@ -26,6 +33,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btnStop.clicked.connect(self.stop_server)
         self.btnRestart.clicked.connect(self.restart_server)
         self.btnSettings.clicked.connect(self.open_settings)
+        self.btnConfig.clicked.connect(self.open_config)
         
         self.server.output.connect(self.add_console_line)
         self.server.server_status_changed.connect(self.update_server_status)
@@ -110,10 +118,26 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def open_settings(self):
         dialog = SettingsDialog(self.settings_manager)
         dialog.exec()
+   
+   
+    def open_config(self):
+        if self.config_manager.load_config():
+            dialog = ConfigDialog(self.config_manager)  
+            dialog.exec()
+        else:
+            QMessageBox.warning(
+            self,
+            "Config file not found",
+            "Please make sure you chose the correct path to storage directory in settings."
+        )
       
-        
-app = QtWidgets.QApplication(sys.argv)
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    # qdarktheme.setup_theme() #TODO Dark Theme
 
-window = MainWindow()
-window.show()
-app.exec()
+    window = MainWindow()
+    window.show()
+    app.exec()
+    
+    
+main()

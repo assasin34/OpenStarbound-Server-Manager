@@ -527,11 +527,19 @@ QProgressBar::chunk {
        <string>Settings</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabConfig">
-     <attribute name="title">
-      <string>Server Config</string>
-     </attribute>
+     <widget class="QPushButton" name="btnConfig">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>0</y>
+        <width>81</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Config</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
