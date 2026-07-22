@@ -100,7 +100,7 @@ python main.py
 - [ ] Crash Handling
 - [ ] Automatic backups
 - [ ] Plugin/Mod manager
-- [ ] Player Tracking
+- [ ] Player Location Tracking
 - [ ] Implement native Dark Mode support
 - [ ] Refresh user interface for a more modern look
 - [ ] Multiple server profiles

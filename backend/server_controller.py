@@ -1,5 +1,6 @@
 from PySide6.QtCore import QProcess, QTimer, Signal, QObject
 from backend.settings_manager import SettingsManager
+from backend.config_manager import ConfigManager
 import urllib.request
 import json
 
@@ -8,11 +9,12 @@ class ServerController(QObject):
     server_status_changed = Signal(str)
     ip_changed = Signal(str)
 
-    def __init__(self, settings_manager: SettingsManager):
+    def __init__(self, settings_manager: SettingsManager, config_manager: ConfigManager):
         super().__init__()
         self.starbound_server_process = QProcess()
         self.ngrok_process = QProcess()
         self.settings_manager = settings_manager
+        self.config_manager = config_manager
         self.restart_requested = False
 
         self.starbound_server_process.readyReadStandardOutput.connect(self.read_output)
@@ -36,7 +38,7 @@ class ServerController(QObject):
         
         
     def start_ngrok(self):
-        arguments = ("tcp", "21025")
+        arguments = ("tcp", f"{self.config_manager.config["gameServerPort"]}")
         
         self.ngrok_process.setWorkingDirectory(
             self.settings_manager.settings["ngrok_directory"]
@@ -48,24 +50,24 @@ class ServerController(QObject):
               
         
     def stop(self):
-        if self.starbound_server_process.state() == QProcess.Running:
-            self.server_status_changed.emit("Stopping")
+        if self.starbound_server_process.state() != QProcess.Running:
+            return
+        self.server_status_changed.emit("Stopping")
 
-            self.starbound_server_process.terminate()
+        self.starbound_server_process.terminate()
             
-            if not self.restart_requested:
-                self.ngrok_process.terminate()
+        if not self.restart_requested:
+            self.ngrok_process.terminate()
             
-            def _force_kill():
-                if self.starbound_server_process.state() == QProcess.Running:
-                    self.starbound_server_process.kill()
+        def _force_kill():
+            if self.starbound_server_process.state() == QProcess.Running:
+                self.starbound_server_process.kill()
                     
-                if not self.restart_requested:
-                    if self.ngrok_process.state() == QProcess.Running:
-                        self.ngrok_process.kill()
+            if not self.restart_requested and self.ngrok_process.state() == QProcess.Running:
+                    self.ngrok_process.kill()
                     
-            # if it doesn't stop in 3 seconds → force kill
-            QTimer.singleShot(3000, _force_kill)
+        # if it doesn't stop in 3 seconds → force kill
+        QTimer.singleShot(3000, _force_kill)
         
         
     def restart(self):
@@ -80,12 +82,13 @@ class ServerController(QObject):
         for line in data.splitlines():
             if "listening for incoming TCP connections" in line:
                 self.server_status_changed.emit("Online")
+                self.config_manager.load_config()
                 if self.settings_manager.settings["use_ngrok"] == True:
                     if self.ngrok_process.state() != QProcess.Running:
                         self.start_ngrok()
                 else:
                     public_ip = urllib.request.urlopen('https://api.ipify.org/').read().decode('utf8')
-                    self.ip_changed.emit(f"{public_ip}:21025")
+                    self.ip_changed.emit(f"{public_ip}:{self.config_manager.config["gameServerPort"]}")
             
             self.output.emit(line)
                 

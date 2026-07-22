@@ -24,7 +24,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         self.settings_manager = SettingsManager()
         self.config_manager = ConfigManager(self.settings_manager)
-        self.server = ServerController(self.settings_manager)
+        self.server = ServerController(self.settings_manager, self.config_manager)
         self.resource_monitor = ResourceMonitor(self.server)
         self.player_monitor = PlayerMonitor(self.server)
         self.uptime_monitor = UpTimeMonitor(self.server)
