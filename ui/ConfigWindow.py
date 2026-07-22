@@ -34,7 +34,7 @@ class Ui_Dialog(object):
         self.buttonBox.setMaximumSize(QSize(651, 32))
         self.buttonBox.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.buttonBox.setOrientation(Qt.Orientation.Horizontal)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Ok)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Save)
         self.buttonBox.setCenterButtons(True)
         self.groupBox = QGroupBox(Dialog)
         self.groupBox.setObjectName(u"groupBox")
